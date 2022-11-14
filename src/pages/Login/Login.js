@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+
+
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
+    const [PasswordError, setPasswordError] = useState(' ');
+    const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -11,7 +20,26 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        if (password.length < 6) {
+            setPasswordError('Please provide at least 6 password')
+            return;
+        }
+        setPasswordError(' ');
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset()
+                setSuccess(true);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
+
 
     return (
         <div className='mt-6 ' onSubmit={handleLogin}>
@@ -27,6 +55,9 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
+
+                <p>{PasswordError}</p>
+                {success && <p>User is successfully</p>}
 
                 <Button variant="primary" type="submit">
                     Login
