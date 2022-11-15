@@ -13,9 +13,9 @@ const Register = () => {
     const [success, setSuccess] = useState(false);
     const [userEmail, setUserEmail] = useState(' ');
 
-    const { createUser, verifyEmail, signInWithGoogle } = useContext(AuthContext);
+    const { createUser, verifyEmail, signInWithGoogle, updateUserProfile } = useContext(AuthContext);
 
-    const handleLogin = (event) => {
+    const handleRegister = (event) => {
         event.preventDefault();
         setSuccess(false);
         const form = event.target;
@@ -37,7 +37,7 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 setSuccess(true);
-
+                handleUpdateUserProfile(name, PhotoURL)
                 verifyEmail()
                     .then(() => {
                         alert('You email is not verified.check your email')
@@ -80,19 +80,30 @@ const Register = () => {
             })
             .catch(error => console.error(error))
     }
+
+    const handleUpdateUserProfile = (name, PhotoURL) => {
+        const profile = {
+            displayName: name,
+            PhotoURL: PhotoURL,
+        }
+
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
-        <div onSubmit={handleLogin}>
+        <div onSubmit={handleRegister}>
             <h1 className='text-center mb-3  p-3 text-success'>Please Register hare</h1>
-            <Form className='w-25 h-50 m-auto  border border-success p-4 rounded bg-dark' >
+            <Form className='w-50 h-50 m-auto  border border-success p-4 rounded bg-dark' >
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your name</Form.Label>
-                    <Form.Control type="text" name='name' placeholder="Enter email" />
+                    <Form.Control type="text" name='name' placeholder="Enter name" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Photo URL</Form.Label>
-                    <Form.Control type="text" name='PhotoURL' placeholder="Enter email" />
+                    <Form.Control type="text" name='PhotoURL' placeholder="Enter photo URL" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
