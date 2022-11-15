@@ -7,12 +7,12 @@ const LeftSideNav = () => {
     return (
         <div className='bg-success'>
             <ListGroup >
-                <Link to='/cd'>  <ListGroup.Item variant="danger">C</ListGroup.Item></Link>
-                <Link to='/javaScript'>  <ListGroup.Item variant="success">JAVASCRIPT</ListGroup.Item></Link>
-                <Link to='/python'>  <ListGroup.Item variant="danger">PYTHON</ListGroup.Item></Link>
-                <Link to='/java'>  <ListGroup.Item variant="success">JAVA</ListGroup.Item></Link>
-                <Link to='/ccc'>  <ListGroup.Item variant="danger">C++</ListGroup.Item></Link>
-                <Link to='/php'>  <ListGroup.Item variant="success">PHP</ListGroup.Item></Link>
+                <Link to='/cd' >  <ListGroup.Item variant="danger"><h5>C</h5></ListGroup.Item></Link>
+                <Link to='/javaScript'>  <ListGroup.Item variant="success"><h5>JAVASCRIPT</h5></ListGroup.Item></Link>
+                <Link to='/python'>  <ListGroup.Item variant="danger"><h5>PYTHON</h5></ListGroup.Item></Link>
+                <Link to='/java'>  <ListGroup.Item variant="success"><h5>JAVA</h5></ListGroup.Item></Link>
+                <Link to='/ccc'>  <ListGroup.Item variant="danger"><h5>C++</h5></ListGroup.Item></Link>
+                <Link to='/php'>  <ListGroup.Item variant="success"><h5>PHP</h5></ListGroup.Item></Link>
             </ListGroup>
         </div>
 

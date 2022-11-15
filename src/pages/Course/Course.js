@@ -7,7 +7,7 @@ const Course = () => {
     console.log(courses);
     return (
         <div>
-            <h1>Courses {courses.length}</h1>
+            <h1 className='text-danger'>Courses</h1>
             {
                 courses.map(course => <CourseDetails
                     key={course.id}
