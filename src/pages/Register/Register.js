@@ -93,7 +93,7 @@ const Register = () => {
     }
     return (
         <div onSubmit={handleRegister}>
-            <h1 className='text-center mb-3  p-3 text-success'>Please Register hare</h1>
+            <h1 className='text-center mb-3  p-3 text-success'>Please Register now!</h1>
             <Form className='w-50 h-50 m-auto  border border-success p-4 rounded bg-dark' >
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
